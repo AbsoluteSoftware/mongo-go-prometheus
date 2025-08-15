@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"go.mongodb.org/mongo-driver/event"
+	"go.mongodb.org/mongo-driver/v2/event"
 )
 
 var (
@@ -39,7 +39,7 @@ func NewCommandMonitor(opts ...Option) *event.CommandMonitor {
 	}, monitorLabels)).(*prometheus.CounterVec)
 
 	observeDuration := func(evt event.CommandFinishedEvent) {
-		duration := time.Duration(evt.DurationNanos).Seconds()
+		duration := time.Duration(evt.Duration.Nanoseconds()).Seconds()
 		commands.WithLabelValues(options.InstanceName, evt.CommandName).Observe(duration)
 	}
 
@@ -86,13 +86,13 @@ func NewPoolMonitor(opts ...PoolOption) *event.PoolMonitor {
 
 	observePoolEvents := func(poolEvt *event.PoolEvent) {
 		if poolEvt != nil {
-			if event.ConnectionReturned == poolEvt.Type {
+			if event.ConnectionClosed == poolEvt.Type {
 				pcr.Return()
 			}
-			if event.GetSucceeded == poolEvt.Type {
+			if event.ConnectionReady == poolEvt.Type {
 				pcr.Get()
 			}
-			if event.PoolCleared == poolEvt.Type || event.PoolCreated == poolEvt.Type {
+			if event.ConnectionPoolCleared == poolEvt.Type || event.ConnectionPoolCreated == poolEvt.Type {
 				pcr.Clear()
 			}
 			poolUsage.WithLabelValues(options.InstanceName).Set(float64(pcr.usedConnections))

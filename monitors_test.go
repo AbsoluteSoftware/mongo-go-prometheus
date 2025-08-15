@@ -2,15 +2,15 @@ package mongoprom_test
 
 import (
 	"context"
+	"go.mongodb.org/mongo-driver/v2/event"
 	"strings"
 	"testing"
 	"time"
 
+	mongoprom "github.com/AbsoluteSoftware/mongo-go-prometheus"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/testutil"
 	"github.com/stretchr/testify/assert"
-	mongoprom "github.com/tracepath/mongo-go-prometheus"
-	"go.mongodb.org/mongo-driver/event"
 )
 
 func TestCommandMonitor(t *testing.T) {
@@ -44,8 +44,8 @@ func TestCommandMonitor(t *testing.T) {
 
 		evt := &event.CommandSucceededEvent{
 			CommandFinishedEvent: event.CommandFinishedEvent{
-				CommandName:   "insert",
-				DurationNanos: 200 * time.Millisecond.Nanoseconds(),
+				CommandName: "insert",
+				Duration:    200 * time.Millisecond,
 			},
 		}
 
@@ -78,8 +78,8 @@ func TestCommandMonitor(t *testing.T) {
 
 		evt := &event.CommandFailedEvent{
 			CommandFinishedEvent: event.CommandFinishedEvent{
-				CommandName:   "update",
-				DurationNanos: 300 * time.Millisecond.Nanoseconds(),
+				CommandName: "update",
+				Duration:    300 * time.Millisecond,
 			},
 		}
 
