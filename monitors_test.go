@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	mongoprom "github.com/AbsoluteSoftware/mongo-go-prometheus"
+	mongoprom "github.com/AbsoluteSoftware/mongo-go-prometheus/v2"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/testutil"
 	"github.com/stretchr/testify/assert"

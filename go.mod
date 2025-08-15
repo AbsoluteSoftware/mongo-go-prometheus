@@ -1,4 +1,4 @@
-module github.com/AbsoluteSoftware/mongo-go-prometheus
+module github.com/AbsoluteSoftware/mongo-go-prometheus/v2
 
 go 1.23.0
 

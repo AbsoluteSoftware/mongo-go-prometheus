@@ -3,7 +3,7 @@ package mongoprom_test
 import (
 	"testing"
 
-	mongoprom "github.com/AbsoluteSoftware/mongo-go-prometheus"
+	mongoprom "github.com/AbsoluteSoftware/mongo-go-prometheus/v2"
 	"github.com/stretchr/testify/assert"
 )
 
