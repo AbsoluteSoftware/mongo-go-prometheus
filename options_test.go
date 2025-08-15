@@ -3,8 +3,8 @@ package mongoprom_test
 import (
 	"testing"
 
+	mongoprom "github.com/AbsoluteSoftware/mongo-go-prometheus"
 	"github.com/stretchr/testify/assert"
-	mongoprom "github.com/tracepath/mongo-go-prometheus"
 )
 
 func TestOptions(t *testing.T) {
