@@ -1,5 +1,9 @@
 # mongo-go-prometheus
 
+Forked from github.com/tracepath/mongo-go-prometheus
+
+Updated to use mongodb/v2
+
 <p>
   <img src="https://img.shields.io/github/workflow/status/globocom/mongo-go-prometheus/Go?style=flat-square">
   <a href="https://github.com/globocom/mongo-go-prometheus/blob/main/LICENSE">
@@ -15,7 +19,7 @@ Monitors that export Prometheus metrics for the MongoDB Go driver
 
 ## Installation
 
-	go get github.com/tracepath/mongo-go-prometheus
+	go get github.com/AbsoluteSoftware/mongo-go-prometheus
 
 ## Usage
 
@@ -23,9 +27,9 @@ Monitors that export Prometheus metrics for the MongoDB Go driver
 package main
 
 import (
-	"github.com/tracepath/mongo-go-prometheus"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	"github.com/AbsoluteSoftware/mongo-go-prometheus"
+	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
 func main() {
